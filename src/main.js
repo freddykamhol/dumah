@@ -1,31 +1,84 @@
 import './style.css'
-import './release.css'
-import hoodieBack from './assets/hoodie-back.png'
-import hoodieFront from './assets/hoodie-front.png'
 import campaignBack from './assets/hoodie-campaign-back.png'
 import campaignFront from './assets/hoodie-campaign-front.png'
-const products=[['NOBODY SAID IT WAS EASY','HOODIE / OBJECT 001','€280']]
-document.querySelector('#app').innerHTML=`
-<div class="noise"></div><div class="bar">COMPLIMENTARY EU SHIPPING — EDITION 01 AVAILABLE NOW</div>
-<header><a class="logo" href="#top"><svg viewBox="0 0 48 48"><path d="M6 7h14c14 0 22 7 22 17S34 41 20 41H6V7Zm10 8v18h4c7 0 12-3 12-9s-5-9-12-9h-4Z"/></svg><b>DUMAH<small>EDITION</small></b></a><nav><a href="#collection">SHOP</a><a href="#manifesto">MANIFESTO</a><a href="#archive">ARCHIVE</a></nav><div class="actions"><button class="bag">BAG <span>(0)</span></button><button class="menu" aria-label="Menü"><i></i><i></i></button></div></header>
-<main id="top"><section class="hero"><div class="hero-photo"><img src="${campaignBack}" alt="DUMAH Nobody Said It Was Easy Kampagne"></div><div class="hero-sigil" aria-hidden="true">D</div><div class="hero-ring" aria-hidden="true"></div><div class="shade"></div><div class="coords"><span>PRIVATE RELEASE / OBJECT 001</span><span>50 PIECES — WORLDWIDE</span></div><div class="hero-copy"><p>THE FIRST OBJECT — LIMITED TO 50</p><h1>NOBODY<br><em>SAID.</em></h1><div class="drop-date"><span>RELEASE</span><b>04.10.2026　12:00 CEST</b><div id="countdown">00D : 00H : 00M : 00S</div></div><a class="cta" href="#collection">ENTER OBJECT 001 <b>↗</b></a></div><div class="vertical">HANDMADE IN HOLZMINDEN, GERMANY</div><a class="scroll" href="#collection">DISCOVER　↓</a></section>
-<section class="collection" id="collection"><div class="section-head reveal"><div><span>[ PRIVATE RELEASE ]</span><h2>OBJECT 001</h2></div><p>The only DUMAH product currently available.<br>Handmade in Holzminden, Germany. No reissue.</p><small>RELEASE / 04.10.2026 — 12:00</small></div><div class="grid single-product">${products.map((p,i)=>`<article class="product reveal featured" data-id="${i}"><button class="inspect" aria-label="${p[0]} ansehen"><div class="pic piece-1"><div class="hoodie-wide"><img src="${campaignBack}" alt="DUMAH Hoodie Kampagne mit sichtbarem Backprint"></div><small>OBJECT 001 — 50 PIECES ONLY</small><span class="enter">ENTER OBJECT　↗</span></div><div class="info"><div><small>${p[1]}　/　HANDMADE IN GERMANY</small><h3>${p[0]}</h3><span class="availability">RELEASE 04.10.2026　12:00 CEST</span></div><b>${p[2]}</b></div></button></article>`).join('')}</div></section>
-<section class="provenance"><div><small>01</small><span>OBJECT</span><b>NOBODY SAID IT WAS EASY</b></div><div><small>02</small><span>WORLDWIDE LIMIT</span><b>50 PIECES</b></div><div><small>03</small><span>PRODUCTION</span><b>HANDMADE / HOLZMINDEN</b></div><div><small>04</small><span>REISSUE</span><b>NEVER</b></div></section>
-<section class="wide-campaign"><div class="wide-copy"><small>[ CAMPAIGN / NIGHT 001 ]</small><h2>IT WAS<br>NEVER EASY.</h2><span>HOLZMINDEN　/　HANDMADE IN GERMANY</span></div><div class="wide-frame wide-back"><img src="${campaignBack}" alt="Nobody Said It Was Easy Hoodie Kampagne Rückseite"></div><div class="wide-frame wide-front"><img src="${campaignFront}" alt="Nobody Said It Was Easy Hoodie Kampagne Vorderseite"></div><div class="wide-index">DUMAH OBJECT 001　—　01 / 50</div></section>
-<section class="manifesto" id="manifesto"><div class="ghost">D</div><div class="statement reveal"><small>[ THE CODE ]</small><p>WE DON'T DESIGN FOR<br>THE PRESENT. <em>WE SHAPE</em><br><em>WHAT COMES AFTER.</em></p><a href="#archive">READ THE MANIFESTO ↗</a></div><div class="origin">DUMAH / דומה<br>THE ANGEL OF SILENCE</div></section>
-<section class="archive" id="archive"><div class="archive-art" aria-hidden="true"><span>D</span><i></i></div><article class="reveal"><small>[ ARCHIVE / 00 ]</small><h2>THE<br>SILENCE<br>BEFORE.</h2><p>A study in protection, restraint and the architecture of movement.</p><a class="cta" href="#top">VIEW THE EDITION <b>↗</b></a></article></section></main>
-<footer><a href="#top">DUMAH<sup>®</sup></a><div>INSTAGRAM　 CONTACT　 LEGAL</div><small>© 2026 DUMAH EDITION<br>BERLIN, DE</small></footer>
-<div class="backdrop"></div><aside aria-hidden="true"><button class="close">×</button><small>[ YOUR SELECTION ]</small><h2>BAG <sup>0</sup></h2><div class="cart"><p>YOUR BAG IS EMPTY.<br>OBJECT 001 IS WAITING.</p></div><div class="checkout"><div>SUBTOTAL <b>€0</b></div><button>PROCEED TO CHECKOUT　↗</button></div></aside><div class="piece-view" aria-hidden="true"><button class="piece-close" aria-label="Schließen">×</button><div class="piece-stage piece-real"><div class="real-stage"><img src="${campaignBack}" alt="Nobody Said It Was Easy Rückseite"><img src="${campaignFront}" alt="Nobody Said It Was Easy Vorderseite"></div><span>FRONT / BACK　—　OBJECT 001</span></div><div class="piece-panel"><small>[ PRIVATE OBJECT / 001 ]</small><h2>NOBODY SAID IT WAS EASY</h2><p>Heavy washed black. Handmade in Holzminden, Germany. Fifty individually numbered pieces, each delivered with its certificate of provenance.</p><dl><div><dt>EDITION</dt><dd>01—50 / 50</dd></div><div><dt>ORIGIN</dt><dd>HOLZMINDEN / DE</dd></div><div><dt>RELEASE</dt><dd>04.10.26 / 12:00</dd></div></dl><label>SELECT SIZE</label><div class="sizes"><button>S</button><button class="selected">M</button><button>L</button><button>XL</button></div><button class="acquire locked-release" disabled>RELEASE 04.10.2026 <b>12:00</b></button><small class="concierge">HANDMADE IN GERMANY　/　50 PIECES WORLDWIDE</small></div></div>`
+import hoodieBack from './assets/hoodie-back.png'
+import hoodieFront from './assets/hoodie-front.png'
 
-const cart=[],drawer=document.querySelector('aside'),backdrop=document.querySelector('.backdrop')
-function openCart(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('open',open);drawer.setAttribute('aria-hidden',!open);document.body.classList.toggle('locked',open)}
-document.querySelector('.bag').onclick=()=>openCart(true);document.querySelector('.close').onclick=()=>openCart(false);backdrop.onclick=()=>openCart(false);document.addEventListener('keydown',e=>e.key==='Escape'&&openCart(false))
-const view=document.querySelector('.piece-view');let activeProduct=0
-function openPiece(id){if(id>0)return;activeProduct=id;view.classList.add('open');view.setAttribute('aria-hidden','false');document.body.classList.add('locked')}
-function closePiece(){view.classList.remove('open');view.setAttribute('aria-hidden','true');document.body.classList.remove('locked')}
-document.querySelectorAll('.inspect').forEach(btn=>btn.onclick=e=>openPiece(+e.currentTarget.closest('.product').dataset.id));document.querySelector('.piece-close').onclick=closePiece
-document.querySelectorAll('.sizes button').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.sizes button').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected')})
-document.querySelector('.acquire').onclick=()=>{let p=products[activeProduct],size=document.querySelector('.sizes .selected').textContent;cart.push([...p,size]);document.querySelector('.bag span').textContent=`(${cart.length})`;drawer.querySelector('h2 sup').textContent=cart.length;drawer.querySelector('.checkout b').textContent=`€${cart.reduce((s,x)=>s+ +x[2].slice(1),0)}`;drawer.querySelector('.cart').innerHTML=cart.map((x,i)=>`<div class="line"><div class="cart-code">D/0${i+1}</div><div><small>${x[1]}</small><b>${x[0]}</b><span>SIZE ${x[3]} / ${x[2]}</span></div></div>`).join('');closePiece();openCart(true)}
-const menu=document.querySelector('.menu');menu.onclick=()=>{menu.classList.toggle('active');document.querySelector('nav').classList.toggle('active')};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>document.querySelector('nav').classList.remove('active'))
-const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('visible')),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>obs.observe(x))
-const releaseAt=new Date('2026-10-04T12:00:00+02:00');const clock=document.querySelector('#countdown');const tick=()=>{const left=Math.max(0,releaseAt-Date.now()),d=Math.floor(left/86400000),h=Math.floor(left/3600000)%24,m=Math.floor(left/60000)%60,s=Math.floor(left/1000)%60;clock.textContent=`${String(d).padStart(2,'0')}D : ${String(h).padStart(2,'0')}H : ${String(m).padStart(2,'0')}M : ${String(s).padStart(2,'0')}S`};tick();setInterval(tick,1000)
+const product = { name: 'Nobody Said It Was Easy', price: 280, edition: 'Object 001' }
+
+document.querySelector('#app').innerHTML = `
+<div class="announcement">PRIVATE RELEASE · 50 PIECES WORLDWIDE · COMPLIMENTARY EU SHIPPING</div>
+<header class="site-header">
+  <a class="brand" href="#shop" aria-label="Dumah Startseite"><span class="brand-mark">D</span><span>DUMAH<small>EDITION</small></span></a>
+  <nav aria-label="Hauptnavigation"><a class="active" href="#shop">Shop</a><a href="#craft">The Object</a><a href="#edition">Edition</a></nav>
+  <button class="bag-button" type="button">Bag <span>0</span></button>
+</header>
+<main>
+  <section class="shop-screen" id="shop">
+    <div class="product-visual">
+      <div class="edition-stamp"><span>01</span><small>OF 50</small></div>
+      <img class="product-image is-active" src="${campaignBack}" alt="Schwarzer DUMAH Hoodie mit Rückenprint">
+      <img class="product-image" src="${campaignFront}" alt="Schwarzer DUMAH Hoodie von vorne">
+      <div class="image-controls" aria-label="Produktansicht wählen"><button class="view-button is-active" data-view="0">Back</button><button class="view-button" data-view="1">Front</button></div>
+      <span class="image-note">Campaign 01 · Holzminden</span>
+    </div>
+    <div class="product-buy">
+      <div class="eyebrow"><span>${product.edition}</span><span>Available 04.10.2026</span></div>
+      <div><p class="kicker">The inaugural private release</p><h1>Nobody Said<br>It Was <em>Easy.</em></h1><p class="description">A heavyweight garment, cut and finished by hand in Germany. Individually numbered and never reproduced.</p></div>
+      <div class="purchase">
+        <div class="price-row"><span>Heavyweight hoodie</span><strong>€${product.price}</strong></div>
+        <div class="size-row"><span>Select size</span><div class="sizes" role="group" aria-label="Größe auswählen"><button type="button">S</button><button class="is-selected" type="button">M</button><button type="button">L</button><button type="button">XL</button></div></div>
+        <button class="add-to-bag" type="button"><span>Add to bag</span><span>→</span></button>
+        <p class="purchase-note">Numbered certificate · Premium packaging · Secure checkout</p>
+      </div>
+    </div>
+  </section>
+  <section class="story-screen" id="craft">
+    <div class="story-copy"><span class="section-number">02 / The Object</span><h2>Made slowly.<br>Worn <em>forever.</em></h2><p>450 GSM brushed cotton, an architectural oversized cut and a finish that develops character with every wear. Every piece passes through our hands in Holzminden.</p><dl><div><dt>Material</dt><dd>100% premium cotton</dd></div><div><dt>Construction</dt><dd>Hand-finished in Germany</dd></div><div><dt>Edition</dt><dd>50 numbered pieces</dd></div></dl></div>
+    <div class="detail-visual"><img src="${hoodieBack}" alt="Detailansicht des DUMAH Hoodie Rückenprints"><span class="detail-caption">Object 001 · Back study</span></div>
+  </section>
+  <section class="edition-screen" id="edition">
+    <img src="${hoodieFront}" alt="DUMAH Hoodie Vorderansicht"><div class="edition-overlay"></div>
+    <div class="edition-copy"><span class="section-number">03 / Private Edition</span><h2>Fifty pieces.<br><em>No second run.</em></h2><p>When the edition closes, the object enters the archive.</p><a href="#shop">Secure your number <span>↗</span></a></div>
+    <div class="edition-meta"><span>Designed in silence</span><span>DUMAH® · 2026</span></div>
+  </section>
+</main>
+<aside class="bag-drawer" aria-hidden="true"><button class="bag-close" aria-label="Warenkorb schließen">×</button><div class="bag-heading"><span>Your selection</span><h2>Bag <sup>0</sup></h2></div><div class="bag-content"><p>Your bag is empty.</p></div><div class="bag-summary"><div><span>Subtotal</span><strong>€0</strong></div><button type="button" disabled>Checkout <span>→</span></button><small>Taxes included. Shipping calculated at checkout.</small></div></aside><div class="backdrop"></div>`
+
+const images = [...document.querySelectorAll('.product-image')]
+const viewButtons = [...document.querySelectorAll('.view-button')]
+viewButtons.forEach((button) => button.addEventListener('click', () => {
+  const index = Number(button.dataset.view)
+  images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === index))
+  viewButtons.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index))
+}))
+
+document.querySelectorAll('.sizes button').forEach((button) => button.addEventListener('click', () => {
+  document.querySelectorAll('.sizes button').forEach((item) => item.classList.remove('is-selected'))
+  button.classList.add('is-selected')
+}))
+
+const drawer = document.querySelector('.bag-drawer')
+const backdrop = document.querySelector('.backdrop')
+const setBagOpen = (open) => {
+  drawer.classList.toggle('is-open', open); backdrop.classList.toggle('is-open', open)
+  drawer.setAttribute('aria-hidden', String(!open)); document.body.classList.toggle('no-scroll', open)
+}
+document.querySelector('.bag-button').addEventListener('click', () => setBagOpen(true))
+document.querySelector('.bag-close').addEventListener('click', () => setBagOpen(false))
+backdrop.addEventListener('click', () => setBagOpen(false))
+document.addEventListener('keydown', (event) => event.key === 'Escape' && setBagOpen(false))
+
+document.querySelector('.add-to-bag').addEventListener('click', () => {
+  const size = document.querySelector('.sizes .is-selected').textContent
+  document.querySelector('.bag-button span').textContent = '1'; document.querySelector('.bag-heading sup').textContent = '1'
+  document.querySelector('.bag-content').innerHTML = `<div class="bag-item"><img src="${campaignFront}" alt="${product.name}"><div><small>${product.edition}</small><strong>${product.name}</strong><span>Size ${size} · €${product.price}</span></div></div>`
+  document.querySelector('.bag-summary strong').textContent = `€${product.price}`
+  document.querySelector('.bag-summary button').disabled = false; setBagOpen(true)
+})
+
+const navLinks = [...document.querySelectorAll('nav a')]
+const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+  if (entry.isIntersecting) navLinks.forEach((link) => link.classList.toggle('active', link.hash === `#${entry.target.id}`))
+}), { threshold: 0.55 })
+document.querySelectorAll('main section').forEach((section) => observer.observe(section))

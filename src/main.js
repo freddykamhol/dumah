@@ -88,7 +88,11 @@ document.querySelector('.add-to-bag').addEventListener('click', () => {
 
 const checkout = document.querySelector('.checkout-panel')
 const setCheckoutOpen = (open) => { checkout.classList.toggle('is-open', open); checkout.setAttribute('aria-hidden', String(!open)); document.body.classList.toggle('no-scroll', open) }
-document.querySelector('.start-checkout').addEventListener('click', () => { setBagOpen(false); setCheckoutOpen(true) })
+document.querySelector('.start-checkout').addEventListener('click', () => {
+  const size = document.querySelector('.sizes .is-selected').textContent
+  sessionStorage.setItem('dumah_order', JSON.stringify({ size, shipping: 'standard' }))
+  window.location.href = '/checkout/'
+})
 document.querySelector('.checkout-back').addEventListener('click', () => setCheckoutOpen(false))
 document.querySelector('.payment-return').addEventListener('click', () => { setCheckoutOpen(false); checkout.classList.remove('is-ready') })
 document.querySelectorAll('input[name="shipping"]').forEach((radio) => radio.addEventListener('change', () => {

@@ -68,14 +68,15 @@ const showCookieNotice = (language) => {
   notice.setAttribute('role', 'dialog')
   notice.setAttribute('aria-label', language === 'en' ? 'Cookie notice' : 'Cookie-Hinweis')
   notice.innerHTML = language === 'en'
-    ? `<span>PRIVACY / COOKIES</span><p>We only use technically necessary cookies to remember your language and cookie preference. Address searches are sent to OpenStreetMap's Photon service only while you type.</p><button type="button">Understood</button>`
-    : `<span>DATENSCHUTZ / COOKIES</span><p>Wir verwenden ausschließlich technisch notwendige Cookies, um deine Sprach- und Cookie-Auswahl zu speichern. Adresssuchen werden nur während der Eingabe an den OpenStreetMap-Dienst Photon übermittelt.</p><button type="button">Verstanden</button>`
+    ? `<span>PRIVACY / COOKIES</span><p>Necessary cookies remember your language and privacy choice. With your consent, a pseudonymous visitor ID helps us measure page usage. Address searches are sent to OpenStreetMap's Photon service only while you type.</p><div><button type="button" data-choice="accepted">Allow statistics</button><button type="button" data-choice="necessary">Necessary only</button></div>`
+    : `<span>DATENSCHUTZ / COOKIES</span><p>Notwendige Cookies speichern deine Sprach- und Datenschutzauswahl. Mit deiner Zustimmung hilft uns eine pseudonyme Besucher-ID bei der Seitenstatistik. Adresssuchen werden nur während der Eingabe an den OpenStreetMap-Dienst Photon übermittelt.</p><div><button type="button" data-choice="accepted">Statistik erlauben</button><button type="button" data-choice="necessary">Nur notwendige</button></div>`
   document.body.append(notice)
-  notice.querySelector('button').addEventListener('click', () => {
-    writeCookie('dumah_cookie_notice', 'accepted')
+  notice.querySelectorAll('button').forEach((button) => button.addEventListener('click', () => {
+    writeCookie('dumah_cookie_notice', button.dataset.choice)
+    if (button.dataset.choice === 'accepted') window.dispatchEvent(new Event('dumah-statistics-consent'))
     notice.classList.add('is-leaving')
     setTimeout(() => notice.remove(), 240)
-  })
+  }))
 }
 
 export const initPreferences = () => {

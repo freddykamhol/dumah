@@ -20,7 +20,7 @@
 
 /* German copy needs its own rhythm: longer words must never collide or crowd the layout. */
 html[lang="de"] .story-copy h2{line-height:1.04!important}
-@media(min-width:721px){html[lang="de"] .story-screen{height:auto;min-height:100svh;align-items:stretch}html[lang="de"] .story-copy{min-height:100svh;justify-content:center;padding-top:clamp(68px,8vh,100px);padding-bottom:clamp(68px,8vh,100px)}html[lang="de"] .story-copy h2{margin:clamp(24px,3.5vh,38px) 0}html[lang="de"] .story-copy dl{margin-top:clamp(24px,3.5vh,38px)}html[lang="de"] .detail-visual{min-height:100svh}}
+@media(min-width:721px){html[lang="de"] .story-screen{height:auto;min-height:100svh;align-items:stretch}html[lang="de"] .story-copy{min-height:100svh;justify-content:center;padding-top:clamp(48px,6vh,76px);padding-bottom:clamp(48px,6vh,76px)}html[lang="de"] .story-copy h2{margin:clamp(18px,2.5vh,28px) 0}html[lang="de"] .story-copy dl{margin-top:clamp(18px,2.5vh,28px)}html[lang="de"] .detail-visual{min-height:100svh}}
 html[lang="de"] .site-header nav{gap:clamp(18px,2.2vw,38px)}
 html[lang="de"] .site-header nav a{font-size:.7rem;letter-spacing:.09em;white-space:nowrap}
 html[lang="de"] .announcement{letter-spacing:.13em}

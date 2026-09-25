@@ -6,7 +6,8 @@ import campaignBack from './assets/hoodie-campaign-back.png'
 const product = { name: 'Nobody Said It Was Easy', price: 79.99 }
 const money = value => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value)
 const step = document.body.dataset.step
-const order = JSON.parse(sessionStorage.getItem('dumah_order') || '{"size":"M","shipping":"standard"}')
+const order = JSON.parse(localStorage.getItem('dumah_order') || localStorage.getItem('dumah_cart') || '{"size":"M","shipping":"standard"}')
+order.shipping ||= 'standard'
 const customer = JSON.parse(sessionStorage.getItem('dumah_customer') || '{}')
 const shippingPrice = order.shipping === 'express' ? 9.9 : 0
 
@@ -22,8 +23,19 @@ document.querySelector('#checkout').innerHTML = `<header class="checkout-header"
 document.querySelector('.summary-toggle').addEventListener('click', e => e.currentTarget.closest('.summary').classList.toggle('open'))
 document.querySelectorAll('input[type="radio"]').forEach(input => input.addEventListener('change', () => { document.querySelectorAll(`input[name="${input.name}"]`).forEach(i=>i.closest('label').classList.toggle('selected',i.checked)) }))
 if(step==='information') document.querySelector('#info-form').addEventListener('submit', e => { e.preventDefault(); if(!e.currentTarget.checkValidity()){e.currentTarget.reportValidity();document.querySelector('.error').textContent='Bitte fülle alle Pflichtfelder aus.';return} sessionStorage.setItem('dumah_customer',JSON.stringify(Object.fromEntries(new FormData(e.currentTarget))));location.href='/checkout/shipping.html' })
-if(step==='shipping') document.querySelector('#shipping-form').addEventListener('submit', e => { e.preventDefault();order.shipping=new FormData(e.currentTarget).get('shipping');sessionStorage.setItem('dumah_order',JSON.stringify(order));location.href='/checkout/payment.html' })
-if(step==='payment') document.querySelector('#payment-form').addEventListener('submit', e => { e.preventDefault();document.querySelector('.error').textContent='Für echte Zahlungen muss Stripe, Shopify Payments oder PayPal angebunden werden.' })
+if(step==='shipping') document.querySelector('#shipping-form').addEventListener('submit', e => { e.preventDefault();order.shipping=new FormData(e.currentTarget).get('shipping');localStorage.setItem('dumah_order',JSON.stringify(order));location.href='/checkout/payment.html' })
+if(step==='payment') document.querySelector('#payment-form').addEventListener('submit', async e => {
+  e.preventDefault()
+  const button = e.currentTarget.querySelector('button[type="submit"]')
+  const error = document.querySelector('.error')
+  button.disabled = true
+  const response = await fetch('/api/orders', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...customer, ...order }) }).catch(() => null)
+  if (!response?.ok) { button.disabled = false; error.textContent = 'Die Bestellung konnte nicht vorbereitet werden. Bitte versuche es erneut.'; return }
+  const result = await response.json()
+  error.classList.add('success')
+  error.textContent = `Bestellung ${result.id} wurde erfasst. Die Zahlung ist noch nicht abgeschlossen.`
+  button.textContent = 'Zahlung noch nicht verbunden'
+})
 
 if (step === 'information') {
   const streetInput = document.querySelector('input[name="street"]')
@@ -95,3 +107,6 @@ if (step === 'information') {
 }
 
 initPreferences()
+const trackView = () => fetch('/api/analytics/view', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ path: location.pathname }) }).catch(() => {})
+if (document.cookie.includes('dumah_cookie_notice=accepted')) trackView()
+else window.addEventListener('dumah-statistics-consent', trackView, { once: true })

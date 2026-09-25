@@ -80,20 +80,32 @@ document.querySelector('.bag-close').addEventListener('click', () => setBagOpen(
 backdrop.addEventListener('click', () => setBagOpen(false))
 document.addEventListener('keydown', (event) => event.key === 'Escape' && setBagOpen(false))
 
+const renderCart = (cart, open = false) => {
+  if (!cart?.size) return
+  document.querySelectorAll('.sizes button').forEach((button) => button.classList.toggle('is-selected', button.textContent === cart.size))
+  document.querySelector('.bag-button span').textContent = '1'; document.querySelector('.bag-heading sup').textContent = '1'
+  document.querySelector('.bag-content').innerHTML = `<div class="bag-item"><img src="${campaignBack}" alt="${product.name}"><div><small>${product.edition}</small><strong>${product.name}</strong><span>Größe ${cart.size} · ${money(product.price)}</span></div></div>`
+  document.querySelector('.bag-summary strong').textContent = money(product.price)
+  document.querySelector('.checkout-item i').textContent = cart.size
+  document.querySelector('.bag-summary button').disabled = false
+  if (open) setBagOpen(true)
+}
+
+const savedCart = JSON.parse(localStorage.getItem('dumah_cart') || 'null')
+renderCart(savedCart)
+
 document.querySelector('.add-to-bag').addEventListener('click', () => {
   const size = document.querySelector('.sizes .is-selected').textContent
-  document.querySelector('.bag-button span').textContent = '1'; document.querySelector('.bag-heading sup').textContent = '1'
-  document.querySelector('.bag-content').innerHTML = `<div class="bag-item"><img src="${campaignBack}" alt="${product.name}"><div><small>${product.edition}</small><strong>${product.name}</strong><span>Größe ${size} · ${money(product.price)}</span></div></div>`
-  document.querySelector('.bag-summary strong').textContent = money(product.price)
-  document.querySelector('.checkout-item i').textContent = size
-  document.querySelector('.bag-summary button').disabled = false; setBagOpen(true)
+  const cart = { size, quantity: 1 }
+  localStorage.setItem('dumah_cart', JSON.stringify(cart))
+  renderCart(cart, true)
 })
 
 const checkout = document.querySelector('.checkout-panel')
 const setCheckoutOpen = (open) => { checkout.classList.toggle('is-open', open); checkout.setAttribute('aria-hidden', String(!open)); document.body.classList.toggle('no-scroll', open) }
 document.querySelector('.start-checkout').addEventListener('click', () => {
   const size = document.querySelector('.sizes .is-selected').textContent
-  sessionStorage.setItem('dumah_order', JSON.stringify({ size, shipping: 'standard' }))
+  localStorage.setItem('dumah_order', JSON.stringify({ size, shipping: 'standard' }))
   window.location.href = '/checkout/'
 })
 document.querySelector('.checkout-back').addEventListener('click', () => setCheckoutOpen(false))
@@ -116,3 +128,6 @@ const observer = new IntersectionObserver((entries) => entries.forEach((entry) =
 document.querySelectorAll('main section').forEach((section) => observer.observe(section))
 
 initPreferences()
+const trackView = () => fetch('/api/analytics/view', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ path: location.pathname }) }).catch(() => {})
+if (document.cookie.includes('dumah_cookie_notice=accepted')) trackView()
+else window.addEventListener('dumah-statistics-consent', trackView, { once: true })

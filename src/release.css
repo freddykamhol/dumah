@@ -19,6 +19,7 @@
 @media(max-width:720px){.site-header{display:flex;justify-content:space-between;width:100vw}.bag-button{position:absolute;right:16px}.shop-screen{width:100vw;grid-template-columns:minmax(0,1fr)}.product-buy h1{font-size:clamp(2.25rem,9.6vw,2.6rem)}.product-buy .description{width:100%;overflow-wrap:break-word}.site-header nav{width:100vw}}
 
 /* German copy needs its own rhythm: longer words must never collide or crowd the layout. */
+html[lang="de"] .story-copy h2{line-height:1.04!important}
 html[lang="de"] .site-header nav{gap:clamp(18px,2.2vw,38px)}
 html[lang="de"] .site-header nav a{font-size:.7rem;letter-spacing:.09em;white-space:nowrap}
 html[lang="de"] .announcement{letter-spacing:.13em}

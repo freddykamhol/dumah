@@ -64,6 +64,9 @@ const localAdminApi = () => {
 }
 
 export default defineConfig({
+  // Relative production URLs keep the storefront working below repository
+  // paths such as https://<user>.github.io/dumah/ instead of only at /.
+  base: './',
   plugins: [localAdminApi()],
   build: {
     outDir: 'dist/client',

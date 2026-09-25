@@ -8,7 +8,7 @@ const product = { name: 'Nobody Said It Was Easy', price: 79.99, edition: 'Objec
 const money = (value) => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value)
 
 document.querySelector('#app').innerHTML = `
-<div class="announcement">PUBLIC RELEASE 04.10.2026 · 12:00 CEST · 50 PIECES WORLDWIDE</div>
+<div class="announcement">RELEASE 04.10.2026 · 12:00 CEST · 50 PIECES</div>
 <header class="site-header">
   <a class="brand" href="#shop" aria-label="Dumah Startseite"><span class="brand-mark">D</span><span>DUMAH<small>EDITION</small></span></a>
   <nav aria-label="Hauptnavigation"><a class="active" href="#shop">Shop</a><a href="#craft">The Object</a><a href="#story">Our Story</a><a href="#edition">Edition</a></nav>

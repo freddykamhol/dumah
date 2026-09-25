@@ -34,7 +34,6 @@ async function handleApi(request, env, url) {
     return json({
       order: order.id, created_at: order.created_at, status: order.status, shipping: order.shipping,
       tracking_number: order.tracking_number || '', shipped_at: order.shipped_at || '', canceled_at: order.canceled_at || '',
-      tracking_url: order.tracking_number ? `https://www.dhl.de/de/privatkunden/dhl-sendungsverfolgung.html?piececode=${encodeURIComponent(order.tracking_number)}` : '',
     })
   }
 

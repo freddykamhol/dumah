@@ -44,7 +44,7 @@ const localAdminApi = () => {
         if (url.pathname === '/api/order-status' && req.method === 'GET') {
           const order = orders.find((item) => item.id === String(url.searchParams.get('order') || '').toUpperCase())
           if (!order) return send(res, 404, { error: 'Zu dieser Bestellnummer wurde keine Bestellung gefunden.' })
-          return send(res, 200, { order: order.id, created_at: order.created_at, status: order.status, shipping: order.shipping, tracking_number: order.tracking_number || '', shipped_at: order.shipped_at || '', canceled_at: order.canceled_at || '', tracking_url: order.tracking_number ? `https://www.dhl.de/de/privatkunden/dhl-sendungsverfolgung.html?piececode=${encodeURIComponent(order.tracking_number)}` : '' })
+          return send(res, 200, { order: order.id, created_at: order.created_at, status: order.status, shipping: order.shipping, tracking_number: order.tracking_number || '', shipped_at: order.shipped_at || '', canceled_at: order.canceled_at || '' })
         }
         if (url.pathname === '/api/admin/dashboard' && req.method === 'GET') {
           if (!isAdmin(req)) return send(res, 401, { error: 'Nicht autorisiert' })

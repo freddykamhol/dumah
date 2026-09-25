@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "node app.js",
     "dev": "node scripts/prepare-source-html.mjs && vite",
     "build": "node scripts/prepare-source-html.mjs && node scripts/clean-dist.mjs && vite build && node scripts/prepare-worker.mjs && node scripts/publish-static.mjs",
     "preview": "vite preview"

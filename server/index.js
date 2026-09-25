@@ -26,6 +26,18 @@ const isAdmin = async (request) => {
 async function handleApi(request, env, url) {
   if (!env.DB) return json({ error: 'Database unavailable' }, 503)
 
+  if (url.pathname === '/api/order-status' && request.method === 'GET') {
+    const id = String(url.searchParams.get('order') || '').trim().toUpperCase()
+    if (!/^DE-[A-Z0-9]+-[A-Z0-9]{4}$/.test(id)) return json({ error: 'Bitte gib eine gültige Bestellnummer ein.' }, 400)
+    const order = await env.DB.prepare('SELECT id, created_at, status, shipping, tracking_number, shipped_at, canceled_at FROM orders WHERE id = ?').bind(id).first()
+    if (!order) return json({ error: 'Zu dieser Bestellnummer wurde keine Bestellung gefunden.' }, 404)
+    return json({
+      order: order.id, created_at: order.created_at, status: order.status, shipping: order.shipping,
+      tracking_number: order.tracking_number || '', shipped_at: order.shipped_at || '', canceled_at: order.canceled_at || '',
+      tracking_url: order.tracking_number ? `https://www.dhl.de/de/privatkunden/dhl-sendungsverfolgung.html?piececode=${encodeURIComponent(order.tracking_number)}` : '',
+    })
+  }
+
   if (url.pathname === '/api/analytics/view' && request.method === 'POST') {
     const body = await request.json().catch(() => ({}))
     const existing = cookies(request).dumah_visitor

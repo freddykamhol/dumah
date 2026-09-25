@@ -13,6 +13,7 @@ const pages = [
   'datenschutz/index.html',
   'agb/index.html',
   'widerruf/index.html',
+  'status/index.html',
 ]
 
 for (const page of pages) {

@@ -41,6 +41,11 @@ const localAdminApi = () => {
           return send(res, 200, { ok: true }, { 'set-cookie': `dumah_admin=${encodeURIComponent(`${value}.${signature(value)}`)}; Max-Age=28800; Path=/; HttpOnly; SameSite=Strict` })
         }
         if (url.pathname === '/api/admin/logout' && req.method === 'POST') return send(res, 200, { ok: true }, { 'set-cookie': 'dumah_admin=; Max-Age=0; Path=/; HttpOnly; SameSite=Strict' })
+        if (url.pathname === '/api/order-status' && req.method === 'GET') {
+          const order = orders.find((item) => item.id === String(url.searchParams.get('order') || '').toUpperCase())
+          if (!order) return send(res, 404, { error: 'Zu dieser Bestellnummer wurde keine Bestellung gefunden.' })
+          return send(res, 200, { order: order.id, created_at: order.created_at, status: order.status, shipping: order.shipping, tracking_number: order.tracking_number || '', shipped_at: order.shipped_at || '', canceled_at: order.canceled_at || '', tracking_url: order.tracking_number ? `https://www.dhl.de/de/privatkunden/dhl-sendungsverfolgung.html?piececode=${encodeURIComponent(order.tracking_number)}` : '' })
+        }
         if (url.pathname === '/api/admin/dashboard' && req.method === 'GET') {
           if (!isAdmin(req)) return send(res, 401, { error: 'Nicht autorisiert' })
           const pages = Object.entries(views.reduce((result, view) => ({ ...result, [view.path]: (result[view.path] || 0) + 1 }), {})).map(([path, count]) => ({ path, views: count })).sort((a, b) => b.views - a.views)
@@ -97,6 +102,7 @@ export default defineConfig({
         datenschutz: 'datenschutz/index.html',
         agb: 'agb/index.html',
         widerruf: 'widerruf/index.html',
+        status: 'status/index.html',
       },
     },
   },

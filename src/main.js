@@ -28,7 +28,7 @@ document.querySelector('#app').innerHTML = `
     </div>
     <div class="product-buy">
       <div class="eyebrow"><span>${product.edition}</span><span>Release 04.10.2026</span></div>
-      <div><p class="kicker">Der erste öffentliche DUMAH Release</p><h1>Nobody Said<br>It Was <em>Easy.</em></h1><p class="description">Ein kompromissloser Heavyweight Hoodie, von Hand in Deutschland veredelt. Jedes Exemplar ist nummeriert. Keine Neuauflage.</p></div>
+      <div><p class="kicker">Der erste öffentliche DUMAH-Release</p><h1>Nobody Said<br>It Was <em>Easy.</em></h1><p class="description">Ein kompromissloser Heavyweight-Hoodie, von Hand in Deutschland veredelt. Jedes Exemplar ist nummeriert. Keine Neuauflage.</p></div>
       <div class="purchase">
         <div class="price-row"><span>Heavyweight Hoodie</span><strong>${money(product.price)}</strong></div>
         <div class="size-row"><span>Größe wählen</span><div class="sizes" role="group" aria-label="Größe auswählen"><button type="button">S</button><button class="is-selected" type="button">M</button><button type="button">L</button><button type="button">XL</button></div></div>
@@ -38,7 +38,7 @@ document.querySelector('#app').innerHTML = `
     </div>
   </section>
   <section class="story-screen" id="craft">
-    <div class="story-copy"><span class="section-number">02 / Das Objekt</span><h2>Langsam gefertigt.<br>Für immer <em>getragen.</em></h2><p>450 GSM gebürstete Baumwolle, ein architektonischer Oversized-Fit und ein Finish, das mit jedem Tragen mehr Charakter entwickelt. Jedes Exemplar geht in Holzminden durch unsere Hände.</p><dl><div><dt>Material</dt><dd>100 % Premium-Baumwolle</dd></div><div><dt>Verarbeitung</dt><dd>Von Hand in Deutschland veredelt</dd></div><div><dt>Edition</dt><dd>50 nummerierte Exemplare</dd></div></dl></div>
+    <div class="story-copy"><span class="section-number">02 / Das Objekt</span><h2>Langsam gefertigt.<br>Für immer <em>getragen.</em></h2><p>450 g/m² gebürstete Baumwolle, ein architektonischer Oversized-Fit und ein Finish, das mit jedem Tragen mehr Charakter entwickelt. Jedes Exemplar geht in Holzminden durch unsere Hände.</p><dl><div><dt>Material</dt><dd>100 % Premium-Baumwolle</dd></div><div><dt>Verarbeitung</dt><dd>Von Hand in Deutschland veredelt</dd></div><div><dt>Edition</dt><dd>50 nummerierte Exemplare</dd></div></dl></div>
     <div class="detail-visual"><img src="${hoodieBack}" alt="Detailansicht des DUMAH Hoodie Rückenprints"><span class="detail-caption">Objekt 001 · Rückenstudie</span></div>
   </section>
   <section class="brand-story" id="story">

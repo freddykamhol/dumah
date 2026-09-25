@@ -1,4 +1,5 @@
 import './style.css'
+import './release.css'
 import campaignBack from './assets/hoodie-campaign-back.png'
 import campaignFront from './assets/hoodie-campaign-front.png'
 import hoodieBack from './assets/hoodie-back.png'

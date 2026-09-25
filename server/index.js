@@ -14,7 +14,15 @@ const hmac = async (value) => {
   const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(SESSION_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
   return bytesToHex(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(value)))
 }
-const cookies = (request) => Object.fromEntries((request.headers.get('cookie') || '').split(';').map((part) => part.trim().split('=').map(decodeURIComponent)).filter(([key]) => key))
+const cookies = (request) => Object.fromEntries((request.headers.get('cookie') || '').split(';').flatMap((part) => {
+  const separator = part.indexOf('=')
+  if (separator < 1) return []
+  try {
+    return [[decodeURIComponent(part.slice(0, separator).trim()), decodeURIComponent(part.slice(separator + 1))]]
+  } catch {
+    return []
+  }
+}))
 const isAdmin = async (request) => {
   const token = cookies(request).dumah_admin
   if (!token) return false
@@ -154,7 +162,13 @@ async function handleApi(request, env, url) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
-    if (url.pathname.startsWith('/api/')) return handleApi(request, env, url)
-    return env.ASSETS.fetch(request)
+    try {
+      if (url.pathname.startsWith('/api/')) return await handleApi(request, env, url)
+      return await env.ASSETS.fetch(request)
+    } catch (error) {
+      console.error('Request failed', { method: request.method, path: url.pathname, error: error instanceof Error ? error.message : String(error) })
+      if (url.pathname.startsWith('/api/')) return json({ error: 'Der Server konnte die Anfrage nicht verarbeiten. Bitte lade die Seite neu.' }, 500)
+      return new Response('Server Error', { status: 500, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' } })
+    }
   },
 }

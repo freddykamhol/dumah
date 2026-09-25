@@ -11,7 +11,7 @@ document.querySelector('#app').innerHTML = `
 <div class="announcement">PUBLIC RELEASE 04.10.2026 · 12:00 CEST · 50 PIECES WORLDWIDE</div>
 <header class="site-header">
   <a class="brand" href="#shop" aria-label="Dumah Startseite"><span class="brand-mark">D</span><span>DUMAH<small>EDITION</small></span></a>
-  <nav aria-label="Hauptnavigation"><a class="active" href="#shop">Shop</a><a href="#craft">The Object</a><a href="#edition">Edition</a></nav>
+  <nav aria-label="Hauptnavigation"><a class="active" href="#shop">Shop</a><a href="#craft">The Object</a><a href="#story">Our Story</a><a href="#edition">Edition</a></nav>
   <button class="bag-button" type="button">Bag <span>0</span></button>
 </header>
 <main>
@@ -38,9 +38,15 @@ document.querySelector('#app').innerHTML = `
     <div class="story-copy"><span class="section-number">02 / The Object</span><h2>Made slowly.<br>Worn <em>forever.</em></h2><p>450 GSM brushed cotton, an architectural oversized cut and a finish that develops character with every wear. Every piece passes through our hands in Holzminden.</p><dl><div><dt>Material</dt><dd>100% premium cotton</dd></div><div><dt>Construction</dt><dd>Hand-finished in Germany</dd></div><div><dt>Edition</dt><dd>50 numbered pieces</dd></div></dl></div>
     <div class="detail-visual"><img src="${hoodieBack}" alt="Detailansicht des DUMAH Hoodie Rückenprints"><span class="detail-caption">Object 001 · Back study</span></div>
   </section>
+  <section class="brand-story" id="story">
+    <div class="story-monogram" aria-hidden="true">D</div>
+    <div class="brand-story-intro"><span class="section-number">03 / The Story</span><p class="story-lead">DUMAH was born from a simple conviction:</p><h2>Silence can be<br><em>more powerful</em><br>than noise.</h2></div>
+    <div class="brand-story-body"><p>DUMAH EDITION exists between restraint and defiance. We create objects for people who do not need permission, explanation or mass approval.</p><p>Far from the machinery of fast fashion, every piece passes through our hands in Holzminden. It is cut, finished and inspected in small numbers. The marks of the process are not hidden — they are part of the object.</p><p>We do not build seasonal collections. We release one thought at a time. Each object is numbered, each edition closes permanently, and what is gone becomes part of the archive.</p><blockquote>Designed in silence.<br>Made to leave a mark.</blockquote></div>
+    <div class="story-origin"><span>HOLZMINDEN / GERMANY</span><span>INDEPENDENT / HANDMADE</span><span>EST. IN SILENCE</span></div>
+  </section>
   <section class="edition-screen" id="edition">
     <img src="${hoodieFront}" alt="DUMAH Hoodie Vorderansicht"><div class="edition-overlay"></div>
-    <div class="edition-copy"><span class="section-number">03 / Limited Edition</span><h2>Fifty pieces.<br><em>No second run.</em></h2><p>Public release on 04.10.2026 at 12:00 CEST. When the edition closes, the object enters the archive.</p><a href="#shop">View the object <span>↗</span></a></div>
+    <div class="edition-copy"><span class="section-number">04 / Limited Edition</span><h2>Fifty pieces.<br><em>No second run.</em></h2><p>Public release on 04.10.2026 at 12:00 CEST. When the edition closes, the object enters the archive.</p><a href="#shop">View the object <span>↗</span></a></div>
     <div class="edition-meta"><span>Designed in silence</span><span>DUMAH® · 2026</span></div>
   </section>
 </main>

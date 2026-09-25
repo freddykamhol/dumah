@@ -1,5 +1,7 @@
 import './style.css'
 import './release.css'
+import './preferences.css'
+import { initPreferences } from './preferences.js'
 import campaignBack from './assets/hoodie-campaign-back.png'
 import campaignFront from './assets/hoodie-campaign-front.png'
 import hoodieBack from './assets/hoodie-back.png'
@@ -112,3 +114,5 @@ const observer = new IntersectionObserver((entries) => entries.forEach((entry) =
   if (entry.isIntersecting) navLinks.forEach((link) => link.classList.toggle('active', link.hash === `#${entry.target.id}`))
 }), { threshold: 0.55 })
 document.querySelectorAll('main section').forEach((section) => observer.observe(section))
+
+initPreferences()

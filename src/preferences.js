@@ -23,7 +23,7 @@ const translations = new Map([
   ['02 / Das Objekt', '02 / The Object'], ['03 / Unsere Geschichte', '03 / The Story'], ['04 / Limitierte Edition', '04 / Limited Edition'],
   ['100 % Premium-Baumwolle', '100% premium cotton'], ['Von Hand in Deutschland veredelt', 'Hand-finished in Germany'],
   ['50 nummerierte Exemplare', '50 numbered pieces'], ['Kampagne 01 · Holzminden', 'Campaign 01 · Holzminden'],
-  ['Objekt 001 · Rückenstudie', 'Object 001 · Back study'], ['Der erste öffentliche DUMAH-Release', 'The inaugural public release'],
+  ['Objekt 001 · Rückenansicht', 'Object 001 · Back view'], ['Der erste öffentliche DUMAH-Release', 'The inaugural public release'],
   ['Ein kompromissloser Heavyweight-Hoodie, von Hand in Deutschland veredelt. Jedes Exemplar ist nummeriert. Keine Neuauflage.', 'An uncompromising heavyweight hoodie, hand-finished in Germany. Every piece is individually numbered. No restock.'],
   ['Nummeriertes Zertifikat · Premium-Verpackung · Sicherer Checkout', 'Numbered certificate · Premium packaging · Secure checkout'],
   ['450 g/m² gebürstete Baumwolle, ein architektonischer Oversized-Fit und ein Finish, das mit jedem Tragen mehr Charakter entwickelt. Jedes Exemplar geht in Holzminden durch unsere Hände.', '450 GSM brushed cotton, an architectural oversized fit and a finish that develops character with every wear. Every piece passes through our hands in Holzminden.'],

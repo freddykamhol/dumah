@@ -39,7 +39,7 @@ document.querySelector('#app').innerHTML = `
   </section>
   <section class="story-screen" id="craft">
     <div class="story-copy"><span class="section-number">02 / Das Objekt</span><h2>Langsam gefertigt.<br>Für immer <em>getragen.</em></h2><p>450 g/m² gebürstete Baumwolle, ein architektonischer Oversized-Fit und ein Finish, das mit jedem Tragen mehr Charakter entwickelt. Jedes Exemplar geht in Holzminden durch unsere Hände.</p><dl><div><dt>Material</dt><dd>100 % Premium-Baumwolle</dd></div><div><dt>Verarbeitung</dt><dd>Von Hand in Deutschland veredelt</dd></div><div><dt>Edition</dt><dd>50 nummerierte Exemplare</dd></div></dl></div>
-    <div class="detail-visual"><img src="${hoodieBack}" alt="Detailansicht des DUMAH Hoodie Rückenprints"><span class="detail-caption">Objekt 001 · Rückenstudie</span></div>
+    <div class="detail-visual"><img src="${hoodieBack}" alt="Detailansicht des DUMAH Hoodie Rückenprints"><span class="detail-caption">Objekt 001 · Rückenansicht</span></div>
   </section>
   <section class="brand-story" id="story">
     <div class="story-monogram" aria-hidden="true">D</div>

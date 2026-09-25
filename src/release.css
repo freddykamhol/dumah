@@ -20,6 +20,7 @@
 
 /* German copy needs its own rhythm: longer words must never collide or crowd the layout. */
 html[lang="de"] .story-copy h2{line-height:1.04!important}
+@media(min-width:721px){html[lang="de"] .story-screen{height:auto;min-height:100svh;align-items:stretch}html[lang="de"] .story-copy{min-height:100svh;justify-content:flex-start;padding-top:clamp(110px,12vh,150px);padding-bottom:clamp(80px,10vh,130px)}html[lang="de"] .detail-visual{min-height:100svh}}
 html[lang="de"] .site-header nav{gap:clamp(18px,2.2vw,38px)}
 html[lang="de"] .site-header nav a{font-size:.7rem;letter-spacing:.09em;white-space:nowrap}
 html[lang="de"] .announcement{letter-spacing:.13em}

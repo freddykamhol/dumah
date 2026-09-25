@@ -6,4 +6,4 @@ RewriteEngine On
 # Plesk/nginx can forward extensionless directory requests to the wrong
 # handler. Redirect the public application directories to their canonical
 # slash URLs before that fallback is reached.
-RewriteRule ^(admin|checkout|status|impressum|datenschutz|agb|widerruf)$ $1/ [R=301,L,NE]
+RewriteRule ^(admin|checkout|status|impressum|datenschutz|agb|widerruf)$ /$1/ [R=301,L,NE]

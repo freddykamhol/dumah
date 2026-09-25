@@ -10,3 +10,12 @@ main section{scroll-snap-align:start}.shop-screen{min-height:100svh;padding-top:
 @media(max-width:720px){html{scroll-snap-type:none}.announcement{padding:0 10px;overflow:hidden;white-space:nowrap;font-size:.58rem;letter-spacing:.1em}.site-header{padding:0 18px;background:#080807e8}.brand{font-size:.86rem}.brand-mark{width:30px;height:30px}.shop-screen{min-height:100svh;height:auto;grid-template-columns:1fr;grid-template-rows:minmax(380px,53svh) auto}.product-visual{border-right:0;border-bottom:1px solid var(--line)}.product-image{object-position:center 42%}.edition-stamp{top:18px;left:18px;width:60px;height:60px}.image-controls{left:18px;bottom:18px}.view-button{min-width:62px;padding:9px 11px}.product-buy{display:block;padding:26px 20px 30px}.product-buy>div:nth-child(2){margin:36px 0}h1{font-size:clamp(3.35rem,15vw,5.2rem)}.description{line-height:1.65}.story-screen{height:auto;min-height:100svh;grid-template-columns:1fr}.story-copy{min-height:65svh;padding:80px 22px 55px}.story-copy h2,.edition-copy h2{font-size:clamp(3.45rem,15vw,5.4rem)}.detail-visual{min-height:70svh}.edition-screen{min-height:100svh;padding:100px 22px}.edition-screen>img{object-position:60% center}.edition-overlay{background:linear-gradient(90deg,#050504f0,#05050459),linear-gradient(0deg,#050504cc,transparent 50%)}.edition-copy h2{margin:35px 0}.edition-meta{right:22px;bottom:25px;left:22px}.bag-drawer{padding:38px 22px 25px}}
 @media(max-height:760px) and (min-width:721px){:root{--header:72px}.product-buy{padding-top:22px;padding-bottom:22px}h1{font-size:clamp(3.2rem,4.7vw,5rem)}.description{margin-top:18px;line-height:1.55}.product-buy>div:nth-child(2){padding-top:12px}.story-copy h2,.edition-copy h2{margin:26px 0;font-size:clamp(3.6rem,5vw,6rem)}.story-copy dl{margin-top:26px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Stable headline rendering across Chromium/WebView font rasterizers */
+h1,h2,h1 em,h2 em{
+  font-kerning:normal;
+  letter-spacing:-.015em;
+  -webkit-text-stroke:0 transparent;
+  text-shadow:none;
+}
+h1{line-height:.92}
